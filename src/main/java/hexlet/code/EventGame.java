@@ -1,50 +1,29 @@
 package hexlet.code;
 
-import java.util.Scanner;
-
 class EventGame {
-    public static void startGame() {
-        String name = Cli.getGreet();
+    public String getRulesGame() {
+        return "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    }
 
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        Scanner scanner = new Scanner(System.in);
+    public static String[][] getData(int countSet) {
+        final int multiplier = 100;
 
-        final int countSet = 3;
-        final int multiplier = 10;
+        String[][] result = new String[countSet][2];
+
         for (int i = 0; i < countSet; i++) {
-            int randomNum = (int) (Math.random() * multiplier);
-            System.out.println("Question: " + randomNum);
-            System.out.print("Your answer: ");
-            String answer = scanner.nextLine();
-
-            if (!(answer.equals("yes") || answer.equals("no"))) {
-                return;
-            }
-            boolean boolAnswer = EventGame.getBoolAnswer(answer);
-
-            if (boolAnswer != isEven(randomNum)) {
-                return;
-            }
-
-            System.out.println("Correct!");
-            System.out.println("Congratulations, " + name + "!");
-
-        }
-    }
-
-    private static boolean getBoolAnswer(String line) {
-        if (line.equals("yes")) {
-            return true;
+            int num = (int) (Math.random() * multiplier);
+            result[i][0] = Integer.toString(num);
+            result[i][1] = isEven(num);
         }
 
-        return false;
+        return result;
     }
 
-    private static boolean isEven(int num) {
+    private static String isEven(int num) {
         if (num % 2 == 0) {
-            return true;
+            return "yes";
         }
 
-        return false;
+        return "no";
     }
 }

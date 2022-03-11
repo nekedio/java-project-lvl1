@@ -4,7 +4,7 @@ run:
 install:
 	./gradlew clean install
 
-run-dist:
+run-dist: install
 	./build/install/app/bin/app
 
 check-updates:
