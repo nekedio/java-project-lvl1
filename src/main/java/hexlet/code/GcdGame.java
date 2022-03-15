@@ -6,7 +6,7 @@ class GcdGame {
     }
 
     public static String[][] getData(int countSet) {
-        final int multiplier = 100;
+        final int multiplier = 10;
 
         String[][] result = new String[countSet][2];
 
@@ -21,6 +21,16 @@ class GcdGame {
     }
 
     public static String getGcd(int num1, int num2) {
+        if (num1 == 0 && num2 == 0) {
+            return "infinity";
+        }
+        if (num1 == 0) {
+            return Integer.toString(num2);
+        }
+        if (num2 == 0) {
+            return Integer.toString(num1);
+        }
+
         while (num1 != num2) {
             if (num1 > num2) {
                 num1 = num1 - num2;
