@@ -11,48 +11,44 @@ public class App {
         final int choicePrime = 6;
 
         Cli cli = new Cli();
+        String rulesGame;
+        String[][] data;
 
         cli.setChoice();
 
-        if (cli.getChoice() == choiceGreet) {
-            cli.sayWelcome();
-            cli.setName();
-            cli.sayHello();
-        }
-
-        if (cli.getChoice() == choiceEven) {
-            String rulesGame = EventGame.getRulesGame();
-            String[][] data = EventGame.getData(countSet);
-
-            App.startGame(cli, rulesGame, data);
-        }
-
-        if (cli.getChoice() == choiceCalc) {
-            String rulesGame = CalcGame.getRulesGame();
-            String[][] data = CalcGame.getData(countSet);
-
-            App.startGame(cli, rulesGame, data);
-        }
-
-        if (cli.getChoice() == choiceGCD) {
-            String rulesGame = GcdGame.getRulesGame();
-            String[][] data = GcdGame.getData(countSet);
-
-            App.startGame(cli, rulesGame, data);
-        }
-
-        if (cli.getChoice() == choiceProgression) {
-            String rulesGame = ProgressionGame.getRulesGame();
-            String[][] data = ProgressionGame.getData(countSet);
-
-            App.startGame(cli, rulesGame, data);
-        }
-
-        if (cli.getChoice() == choicePrime) {
-            String rulesGame = PrimeGame.getRulesGame();
-            String[][] data = PrimeGame.getData(countSet);
-
-            App.startGame(cli, rulesGame, data);
+        switch (cli.getChoice()) {
+            case (choiceGreet) -> {
+                cli.sayWelcome();
+                cli.setName();
+                cli.sayHello();
+            }
+            case (choiceEven) -> {
+                rulesGame = EventGame.getRulesGame();
+                data = EventGame.getData(countSet);
+                App.startGame(cli, rulesGame, data);
+            }
+            case (choiceCalc) -> {
+                rulesGame = CalcGame.getRulesGame();
+                data = CalcGame.getData(countSet);
+                App.startGame(cli, rulesGame, data);
+            }
+            case (choiceGCD) -> {
+                rulesGame = GcdGame.getRulesGame();
+                data = GcdGame.getData(countSet);
+                App.startGame(cli, rulesGame, data);
+            }
+            case (choiceProgression) -> {
+                rulesGame = ProgressionGame.getRulesGame();
+                data = ProgressionGame.getData(countSet);
+                App.startGame(cli, rulesGame, data);
+            }
+            case (choicePrime) -> {
+                rulesGame = PrimeGame.getRulesGame();
+                data = PrimeGame.getData(countSet);
+                App.startGame(cli, rulesGame, data);
+            }
+            default -> {
+            }
         }
     }
 

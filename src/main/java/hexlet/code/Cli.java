@@ -52,7 +52,7 @@ class Cli {
 
     public  void sayIncorrect(String answer, String correctAnswer) {
         System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", answer, correctAnswer);
-        System.out.println("Let's try again, " + name);
+        System.out.println("Let's try again, " + name + "!");
     }
 
     public void sayWelcome() {
