@@ -18,6 +18,8 @@ make run-dist
 ```
 
 
+---------------------------------------------------------------------------------------------------------------------------
+
 ## Getting to know
 [![asciicast](https://asciinema.org/a/Hx5QkNQpFIMALYsEWYVUXnByS.svg)](https://asciinema.org/a/Hx5QkNQpFIMALYsEWYVUXnByS)
 
