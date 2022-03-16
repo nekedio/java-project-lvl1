@@ -7,6 +7,7 @@ public class App {
         final int choiceEven = 2;
         final int choiceCalc = 3;
         final int choiceGCD = 4;
+        final int choiceProgression = 5;
 
         Cli cli = new Cli();
 
@@ -65,6 +66,26 @@ public class App {
             GcdGame gcdGame = new GcdGame();
             cli.sayRulesGame(gcdGame.getRulesGame());
             String[][] data = GcdGame.getData(countSet);
+
+            for (String[] set: data) {
+                String answer = cli.startSetGame(set);
+                String correctAnswer = set[1];
+                if (!answer.equals(correctAnswer)) {
+                    cli.sayIncorrect(answer, correctAnswer);
+                    return;
+                }
+                cli.sayCorrect();
+            }
+            cli.sayCongratulations();
+        }
+
+        if (cli.getChoice() == choiceProgression) {
+            cli.sayWelcome();
+            cli.setName();
+            cli.sayHello();
+            ProgressionGame progressionGame = new ProgressionGame();
+            cli.sayRulesGame(progressionGame.getRulesGame());
+            String[][] data = ProgressionGame.getData(countSet);
 
             for (String[] set: data) {
                 String answer = cli.startSetGame(set);
