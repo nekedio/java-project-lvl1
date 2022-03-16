@@ -8,6 +8,7 @@ public class App {
         final int choiceCalc = 3;
         final int choiceGCD = 4;
         final int choiceProgression = 5;
+        final int choicePrime = 6;
 
         Cli cli = new Cli();
 
@@ -86,6 +87,26 @@ public class App {
             ProgressionGame progressionGame = new ProgressionGame();
             cli.sayRulesGame(progressionGame.getRulesGame());
             String[][] data = ProgressionGame.getData(countSet);
+
+            for (String[] set: data) {
+                String answer = cli.startSetGame(set);
+                String correctAnswer = set[1];
+                if (!answer.equals(correctAnswer)) {
+                    cli.sayIncorrect(answer, correctAnswer);
+                    return;
+                }
+                cli.sayCorrect();
+            }
+            cli.sayCongratulations();
+        }
+
+        if (cli.getChoice() == choicePrime) {
+            cli.sayWelcome();
+            cli.setName();
+            cli.sayHello();
+            PrimeGame primeGame = new PrimeGame();
+            cli.sayRulesGame(primeGame.getRulesGame());
+            String[][] data = PrimeGame.getData(countSet);
 
             for (String[] set: data) {
                 String answer = cli.startSetGame(set);
