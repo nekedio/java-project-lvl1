@@ -1,7 +1,7 @@
 package hexlet.code;
 
 class GcdGame {
-    public String getRulesGame() {
+    public static String getRulesGame() {
         return "Find the greatest common divisor of given numbers.";
     }
 

@@ -1,7 +1,7 @@
 package hexlet.code;
 
 class CalcGame {
-    public String getRulesGame() {
+    public static String getRulesGame() {
         return "What is the result of the expression?";
     }
 

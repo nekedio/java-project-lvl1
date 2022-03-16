@@ -21,104 +21,56 @@ public class App {
         }
 
         if (cli.getChoice() == choiceEven) {
-            cli.sayWelcome();
-            cli.setName();
-            cli.sayHello();
-            EventGame eventGame = new EventGame();
-            cli.sayRulesGame(eventGame.getRulesGame());
+            String rulesGame = EventGame.getRulesGame();
             String[][] data = EventGame.getData(countSet);
 
-            for (String[] set: data) {
-                String answer = cli.startSetGame(set);
-                String correctAnswer = set[1];
-                if (!answer.equals(correctAnswer)) {
-                    cli.sayIncorrect(answer, correctAnswer);
-                    return;
-                }
-                cli.sayCorrect();
-            }
-            cli.sayCongratulations();
+            App.startGame(cli, rulesGame, data);
         }
 
         if (cli.getChoice() == choiceCalc) {
-            cli.sayWelcome();
-            cli.setName();
-            cli.sayHello();
-            CalcGame calcGame = new CalcGame();
-            cli.sayRulesGame(calcGame.getRulesGame());
+            String rulesGame = CalcGame.getRulesGame();
             String[][] data = CalcGame.getData(countSet);
 
-            for (String[] set: data) {
-                String answer = cli.startSetGame(set);
-                String correctAnswer = set[1];
-                if (!answer.equals(correctAnswer)) {
-                    cli.sayIncorrect(answer, correctAnswer);
-                    return;
-                }
-                cli.sayCorrect();
-            }
-            cli.sayCongratulations();
+            App.startGame(cli, rulesGame, data);
         }
 
         if (cli.getChoice() == choiceGCD) {
-            cli.sayWelcome();
-            cli.setName();
-            cli.sayHello();
-            GcdGame gcdGame = new GcdGame();
-            cli.sayRulesGame(gcdGame.getRulesGame());
+            String rulesGame = GcdGame.getRulesGame();
             String[][] data = GcdGame.getData(countSet);
 
-            for (String[] set: data) {
-                String answer = cli.startSetGame(set);
-                String correctAnswer = set[1];
-                if (!answer.equals(correctAnswer)) {
-                    cli.sayIncorrect(answer, correctAnswer);
-                    return;
-                }
-                cli.sayCorrect();
-            }
-            cli.sayCongratulations();
+            App.startGame(cli, rulesGame, data);
         }
 
         if (cli.getChoice() == choiceProgression) {
-            cli.sayWelcome();
-            cli.setName();
-            cli.sayHello();
-            ProgressionGame progressionGame = new ProgressionGame();
-            cli.sayRulesGame(progressionGame.getRulesGame());
+            String rulesGame = ProgressionGame.getRulesGame();
             String[][] data = ProgressionGame.getData(countSet);
 
-            for (String[] set: data) {
-                String answer = cli.startSetGame(set);
-                String correctAnswer = set[1];
-                if (!answer.equals(correctAnswer)) {
-                    cli.sayIncorrect(answer, correctAnswer);
-                    return;
-                }
-                cli.sayCorrect();
-            }
-            cli.sayCongratulations();
+            App.startGame(cli, rulesGame, data);
         }
 
         if (cli.getChoice() == choicePrime) {
-            cli.sayWelcome();
-            cli.setName();
-            cli.sayHello();
-            PrimeGame primeGame = new PrimeGame();
-            cli.sayRulesGame(primeGame.getRulesGame());
+            String rulesGame = PrimeGame.getRulesGame();
             String[][] data = PrimeGame.getData(countSet);
 
-            for (String[] set: data) {
-                String answer = cli.startSetGame(set);
-                String correctAnswer = set[1];
-                if (!answer.equals(correctAnswer)) {
-                    cli.sayIncorrect(answer, correctAnswer);
-                    return;
-                }
-                cli.sayCorrect();
-            }
-            cli.sayCongratulations();
+            App.startGame(cli, rulesGame, data);
         }
+    }
 
+    private static void startGame(Cli cli, String rulesGame, String[][] data) {
+        cli.sayWelcome();
+        cli.setName();
+        cli.sayHello();
+        cli.sayRulesGame(rulesGame);
+
+        for (String[] set: data) {
+            String answer = cli.startSetGame(set);
+            String correctAnswer = set[1];
+            if (!answer.equals(correctAnswer)) {
+                cli.sayIncorrect(answer, correctAnswer);
+                return;
+            }
+            cli.sayCorrect();
+        }
+        cli.sayCongratulations();
     }
 }

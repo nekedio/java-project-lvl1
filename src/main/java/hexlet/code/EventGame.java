@@ -1,7 +1,7 @@
 package hexlet.code;
 
 class EventGame {
-    public String getRulesGame() {
+    public static String getRulesGame() {
         return "Answer 'yes' if the number is even, otherwise answer 'no'.";
     }
 

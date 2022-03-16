@@ -1,7 +1,7 @@
 package hexlet.code;
 
 class PrimeGame {
-    public String getRulesGame() {
+    public static String getRulesGame() {
         return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     }
 
