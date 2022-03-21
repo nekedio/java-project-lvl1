@@ -4,62 +4,47 @@ import java.util.Scanner;
 
 class Cli {
 
-    private int choice;
-    private String name;
-
-    public void setChoice() {
-        System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet");
-        System.out.println("2 - Even");
-        System.out.println("3 - Calc");
-        System.out.println("4 - GCD");
-        System.out.println("5 - Progression");
-        System.out.println("6 - Prime");
-        System.out.println("0 - Exit");
+    public static int getChoice(String listGames) {
+        System.out.println(listGames);
         System.out.print("Your choice: ");
         Scanner scanner = new Scanner(System.in);
-
-        choice = scanner.nextInt();
         System.out.println();
+        return scanner.nextInt();
     }
 
-    public int getChoice() {
-        return choice;
-    }
-
-    public void setName() {
+    public static String getName() {
         System.out.print("May I have your name? ");
         Scanner scanner = new Scanner(System.in);
 
-        name = scanner.nextLine();
+        return scanner.nextLine();
     }
 
-    public void sayHello() {
+    public static void sayHello(String name) {
         System.out.println("Hello, " + name + "!");
     }
 
-    public void sayRulesGame(String rules) {
+    public static void sayRulesGame(String rules) {
         System.out.println(rules);
     }
 
-    public  void sayCongratulations() {
+    public static void sayCongratulations(String name) {
         System.out.println("Congratulations, " + name + "!");
     }
 
-    public  void sayCorrect() {
+    public static void sayCorrect() {
         System.out.println("Correct!");
     }
 
-    public  void sayIncorrect(String answer, String correctAnswer) {
+    public static void sayIncorrect(String answer, String correctAnswer, String name) {
         System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", answer, correctAnswer);
         System.out.println("Let's try again, " + name + "!");
     }
 
-    public void sayWelcome() {
+    public static void sayWelcome() {
         System.out.println("Welcome to the Brain Games!");
     }
 
-    public String startSetGame(String[] set) {
+    public static String startSetGame(String[] set) {
         System.out.println("Question: " + set[0]);
         System.out.print("Your answer: ");
         Scanner scanner = new Scanner(System.in);

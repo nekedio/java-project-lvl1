@@ -1,72 +1,48 @@
 package hexlet.code;
 
+import hexlet.code.games.CalcGame;
+import hexlet.code.games.EventGame;
+import hexlet.code.games.GcdGame;
+import hexlet.code.games.ProgressionGame;
+import hexlet.code.games.PrimeGame;
+
 public class App {
+
+    static final int COUNT_SET = 3;
+    static final int CHOICE_GREET = 1;
+    static final int CHOICE_EVEN = 2;
+    static final int CHOICE_CALC = 3;
+    static final int CHOICE_GCD = 4;
+    static final int CHOICE_PROGRESSION = 5;
+    static final int CHOICE_PRIME = 6;
+
     public static void main(String[] args) {
-        final int countSet = 3;
-        final int choiceGreet = 1;
-        final int choiceEven = 2;
-        final int choiceCalc = 3;
-        final int choiceGCD = 4;
-        final int choiceProgression = 5;
-        final int choicePrime = 6;
-
-        Cli cli = new Cli();
-        String rulesGame;
-        String[][] data;
-
-        cli.setChoice();
-
-        switch (cli.getChoice()) {
-            case (choiceGreet) -> {
-                cli.sayWelcome();
-                cli.setName();
-                cli.sayHello();
+        switch (Cli.getChoice(getListGames())) {
+            case (CHOICE_GREET) -> {
+                Cli.sayWelcome();
+                String name = Cli.getName();
+                Cli.sayHello(name);
             }
-            case (choiceEven) -> {
-                rulesGame = EventGame.getRulesGame();
-                data = EventGame.getData(countSet);
-                App.startGame(cli, rulesGame, data);
-            }
-            case (choiceCalc) -> {
-                rulesGame = CalcGame.getRulesGame();
-                data = CalcGame.getData(countSet);
-                App.startGame(cli, rulesGame, data);
-            }
-            case (choiceGCD) -> {
-                rulesGame = GcdGame.getRulesGame();
-                data = GcdGame.getData(countSet);
-                App.startGame(cli, rulesGame, data);
-            }
-            case (choiceProgression) -> {
-                rulesGame = ProgressionGame.getRulesGame();
-                data = ProgressionGame.getData(countSet);
-                App.startGame(cli, rulesGame, data);
-            }
-            case (choicePrime) -> {
-                rulesGame = PrimeGame.getRulesGame();
-                data = PrimeGame.getData(countSet);
-                App.startGame(cli, rulesGame, data);
-            }
+            case (CHOICE_EVEN) -> EventGame.start(COUNT_SET);
+            case (CHOICE_CALC) -> CalcGame.start(COUNT_SET);
+            case (CHOICE_GCD) -> GcdGame.start(COUNT_SET);
+            case (CHOICE_PROGRESSION) -> ProgressionGame.start(COUNT_SET);
+            case (CHOICE_PRIME) -> PrimeGame.start(COUNT_SET);
             default -> {
             }
         }
     }
 
-    private static void startGame(Cli cli, String rulesGame, String[][] data) {
-        cli.sayWelcome();
-        cli.setName();
-        cli.sayHello();
-        cli.sayRulesGame(rulesGame);
+    private static String getListGames() {
 
-        for (String[] set: data) {
-            String answer = cli.startSetGame(set);
-            String correctAnswer = set[1];
-            if (!answer.equals(correctAnswer)) {
-                cli.sayIncorrect(answer, correctAnswer);
-                return;
-            }
-            cli.sayCorrect();
-        }
-        cli.sayCongratulations();
+        return """
+                1 - Greet
+                2 - Even
+                3 - Calc
+                4 - GCD
+                5 - Progression
+                6 - Prime
+                0 - Exit
+                """;
     }
 }

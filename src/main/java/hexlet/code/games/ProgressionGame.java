@@ -1,8 +1,22 @@
-package hexlet.code;
+package hexlet.code.games;
 
-class ProgressionGame {
+import hexlet.code.Engine;
+
+public class ProgressionGame {
+    static final String RULES_GAME = "What number is missing in the progression?";
+    static final int MULTIPLIER_START = 100;
+    static final int MULTIPLIER_STEP = 3;
+    static final int COUNT_MEMBER = 7;
+    static final int BEGIN_STEP = 1;
+
+    public static void start(int countSet) {
+        String rulesGame = ProgressionGame.getRulesGame();
+        String[][] data = ProgressionGame.getData(countSet);
+        Engine.startGame(rulesGame, data);
+    }
+
     public static String getRulesGame() {
-        return "What number is missing in the progression?";
+        return RULES_GAME;
     }
 
     public static String[][] getData(int countSet) {
@@ -16,19 +30,15 @@ class ProgressionGame {
     }
 
     public static String[] getRandomProgression() {
-        final int multiplierStart = 100;
-        final int multiplierStep = 3;
-        final int countMember = 7;
-        final int beginStep = 1;
-        int start = (int) (Math.random() * multiplierStart);
-        int step = beginStep + (int) (Math.random() * multiplierStep);
-        int unknown = (int) (Math.random() * countMember);
+        int start = (int) (Math.random() * MULTIPLIER_START);
+        int step = BEGIN_STEP + (int) (Math.random() * MULTIPLIER_STEP);
+        int unknown = (int) (Math.random() * COUNT_MEMBER);
         int unknownValue = 0;
         String[] result = new String[2];
         StringBuilder progression = new StringBuilder();
 
         int member = start;
-        for (int i = 0; i < countMember; i++) {
+        for (int i = 0; i < COUNT_MEMBER; i++) {
             if (i == unknown) {
                 progression.append("..");
                 unknownValue = member;
