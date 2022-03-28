@@ -1,24 +1,34 @@
 package hexlet.code;
 
+import java.util.Scanner;
+
 public class Engine {
 
-
+    public static final int COUNT_SET = 3;
 
     public static void startGame(String rulesGame, String[][] data) {
-        Cli.sayWelcome();
-        String name = Cli.getName();
-        Cli.sayHello(name);
-        Cli.sayRulesGame(rulesGame);
+
+        String nameUser = Cli.greet();
+
+        System.out.println(rulesGame);
 
         for (String[] set: data) {
-            String answer = Cli.startSetGame(set);
+
+            System.out.println("Question: " + set[0]);
+            System.out.print("Your answer: ");
+            Scanner scanner = new Scanner(System.in);
+            String answer = scanner.nextLine();
+
             String correctAnswer = set[1];
+
             if (!answer.equals(correctAnswer)) {
-                Cli.sayIncorrect(answer, correctAnswer, name);
+                System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", answer, correctAnswer);
+                System.out.println("Let's try again, " + nameUser + "!");
                 return;
             }
-            Cli.sayCorrect();
+            System.out.println("Correct!");
         }
-        Cli.sayCongratulations(name);
+
+        System.out.println("Congratulations, " + nameUser + "!");
     }
 }
