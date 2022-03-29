@@ -18,7 +18,7 @@ public class CalcGame {
             int num1 = Utils.getRandomSingleDigit();
             int num2 = Utils.getRandomSingleDigit();
             char[] signs = {'-', '*', '+'};
-            char sign = Utils.getRandomSign(signs);
+            char sign = getRandomSign(signs);
             result[i][0] = num1 + " " + sign + " " + num2;
             result[i][1] = getResult(sign, num1, num2);
         }
@@ -30,7 +30,14 @@ public class CalcGame {
         return switch (sign) {
             case ('-') -> Integer.toString(num1 - num2);
             case ('+') -> Integer.toString(num1 + num2);
-            default -> Integer.toString(num1 * num2);
+            case ('*') -> Integer.toString(num1 * num2);
+            default -> throw new Error("Error! Sign \"" + sign + "\" is indefinite.");
         };
+    }
+
+    public static char getRandomSign(char[] signs) {
+        int num = (int) (Math.random() * signs.length);
+
+        return signs[num];
     }
 }

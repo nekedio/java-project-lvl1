@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Engine {
 
     public static final int COUNT_SET = 3;
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void startGame(String rulesGame, String[][] data) {
-
-        String nameUser = Cli.greet();
+        String nameUser = Cli.greet(SCANNER);
 
         System.out.println(rulesGame);
 
@@ -16,9 +16,7 @@ public class Engine {
 
             System.out.println("Question: " + set[0]);
             System.out.print("Your answer: ");
-            Scanner scanner = new Scanner(System.in);
-            String answer = scanner.nextLine();
-
+            String answer = SCANNER.next();
             String correctAnswer = set[1];
 
             if (!answer.equals(correctAnswer)) {
@@ -30,5 +28,10 @@ public class Engine {
         }
 
         System.out.println("Congratulations, " + nameUser + "!");
+        SCANNER.close();
+    }
+
+    public static void greet() {
+        Cli.greet(SCANNER);
     }
 }

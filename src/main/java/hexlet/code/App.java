@@ -9,7 +9,7 @@ import hexlet.code.games.PrimeGame;
 import java.util.Scanner;
 
 public class App {
-
+    static final int CHOICE_EXIT = 0;
     static final int CHOICE_GREET = 1;
     static final int CHOICE_EVEN = 2;
     static final int CHOICE_CALC = 3;
@@ -19,6 +19,7 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println("""
+                Please enter the game number and press Enter.
                 1 - Greet
                 2 - Even
                 3 - Calc
@@ -31,14 +32,14 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         switch (scanner.nextInt()) {
-            case (CHOICE_GREET) -> Cli.greet();
+            case (CHOICE_GREET) -> Engine.greet();
             case (CHOICE_EVEN) -> EventGame.start();
             case (CHOICE_CALC) -> CalcGame.start();
             case (CHOICE_GCD) -> GcdGame.start();
             case (CHOICE_PROGRESSION) -> ProgressionGame.start();
             case (CHOICE_PRIME) -> PrimeGame.start();
-            default -> {
-            }
+            case (CHOICE_EXIT) -> System.exit(0);
+            default -> throw new Error("Error! There is no such choice.");
         }
     }
 }

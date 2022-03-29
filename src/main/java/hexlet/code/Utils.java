@@ -13,12 +13,6 @@ public class Utils {
         return (int) (Math.random() * MULTIPLIER_FOR_TWO_DIGIT);
     }
 
-    public static char getRandomSign(char[] signs) {
-        int num = (int) (Math.random() * signs.length);
-
-        return signs[num];
-    }
-
     public static int getRandomNumInRange(int begin, int end) {
         return begin + (int) (Math.random() * end);
     }
