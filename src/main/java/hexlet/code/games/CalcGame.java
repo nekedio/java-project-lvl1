@@ -31,12 +31,12 @@ public class CalcGame {
             case ('-') -> Integer.toString(num1 - num2);
             case ('+') -> Integer.toString(num1 + num2);
             case ('*') -> Integer.toString(num1 * num2);
-            default -> throw new Error("Error! Sign \"" + sign + "\" is indefinite.");
+            default -> throw new RuntimeException("Error! Sign \"" + sign + "\" is indefinite.");
         };
     }
 
     public static char getRandomSign(char[] signs) {
-        int num = (int) (Math.random() * signs.length);
+        int num = Utils.getRandomNumInRange(0, signs.length);
 
         return signs[num];
     }

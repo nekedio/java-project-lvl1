@@ -32,14 +32,14 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         switch (scanner.nextInt()) {
-            case (CHOICE_GREET) -> Engine.greet();
+            case (CHOICE_GREET) -> Cli.greet();
             case (CHOICE_EVEN) -> EventGame.start();
             case (CHOICE_CALC) -> CalcGame.start();
             case (CHOICE_GCD) -> GcdGame.start();
             case (CHOICE_PROGRESSION) -> ProgressionGame.start();
             case (CHOICE_PRIME) -> PrimeGame.start();
             case (CHOICE_EXIT) -> System.exit(0);
-            default -> throw new Error("Error! There is no such choice.");
+            default -> throw new RuntimeException("Error! There is no such choice.");
         }
     }
 }
