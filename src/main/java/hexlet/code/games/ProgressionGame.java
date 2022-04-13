@@ -18,13 +18,13 @@ public class ProgressionGame {
         String[][] result = new String[countSet][2];
 
         for (int i = 0; i < countSet; i++) {
-            result[i] = getRandomProgression();
+            result[i] = getDataForRound();
         }
 
         return result;
     }
 
-    public static String[] getRandomProgression() {
+    public static String[] getDataForRound() {
         int start = Utils.getRandomTwoDigit();
         int step = Utils.getRandomNumInRange(BEGIN_STEP, END_STEP);
         int unknown = Utils.getRandomNumInRange(0, COUNT_MEMBER);

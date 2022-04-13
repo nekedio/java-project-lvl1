@@ -19,17 +19,13 @@ public class EventGame {
         for (int i = 0; i < countSet; i++) {
             int num = Utils.getRandomTwoDigit();
             result[i][0] = Integer.toString(num);
-            result[i][1] = isEven(num);
+            result[i][1] = isEven(num) ? "yes" : "no";
         }
 
         return result;
     }
 
-    private static String isEven(int num) {
-        if (num % 2 == 0) {
-            return "yes";
-        }
-
-        return "no";
+    private static boolean isEven(int num) {
+        return num % 2 == 0;
     }
 }

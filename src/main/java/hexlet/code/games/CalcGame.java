@@ -5,6 +5,7 @@ import hexlet.code.Utils;
 
 public class CalcGame {
     static final String RULES_GAME = "What is the result of the expression?";
+    static final char[] SIGNS = {'-', '*', '+'};
 
     public static void start() {
         String[][] data = CalcGame.getData(Engine.COUNT_SET);
@@ -17,8 +18,7 @@ public class CalcGame {
         for (int i = 0; i < countSet; i++) {
             int num1 = Utils.getRandomSingleDigit();
             int num2 = Utils.getRandomSingleDigit();
-            char[] signs = {'-', '*', '+'};
-            char sign = getRandomSign(signs);
+            char sign = getRandomSign(SIGNS);
             result[i][0] = num1 + " " + sign + " " + num2;
             result[i][1] = getResult(sign, num1, num2);
         }

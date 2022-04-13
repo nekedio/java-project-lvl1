@@ -14,6 +14,6 @@ public class Utils {
     }
 
     public static int getRandomNumInRange(int begin, int end) {
-        return begin + (int) (Math.random() * end);
+        return (int) ((Math.random() * (end - begin)) + begin);
     }
 }

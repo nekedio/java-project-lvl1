@@ -5,7 +5,6 @@ import hexlet.code.Utils;
 
 public class PrimeGame {
     static final String RULES_GAME = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    static final int MULTIPLIER = 100;
 
     public static void start() {
         String[][] data = PrimeGame.getData(Engine.COUNT_SET);
@@ -18,20 +17,20 @@ public class PrimeGame {
         for (int i = 0; i < countSet; i++) {
             int num = 2 + Utils.getRandomTwoDigit();
             result[i][0] = Integer.toString(num);
-            result[i][1] = isPrime(num);
+            result[i][1] = isPrime(num) ? "yes" : "no";
         }
 
         return result;
     }
 
-    private static String isPrime(int num) {
+    private static boolean isPrime(int num) {
         int i = num - 1;
         while (i > 1) {
             if (num % i == 0) {
-                return "no";
+                return false;
             }
             i--;
         }
-        return "yes";
+        return true;
     }
 }
